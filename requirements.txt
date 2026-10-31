@@ -1,0 +1,23 @@
+# Intelligent Student Support Agent Dependencies
+streamlit>=1.35.0
+langgraph>=0.2.0
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.0
+openai>=1.30.0
+langchain-groq>=1.1.0
+groq>=0.30.0
+faiss-cpu>=1.8.0
+sentence-transformers>=2.7.0
+torch>=2.0.0
+sqlalchemy>=2.0.0
+pypdf>=4.2.0
+reportlab>=4.2.0
+fpdf2>=2.7.0
+plotly>=5.22.0
+pandas>=2.2.0
+python-dotenv>=1.0.0
+pydantic>=2.7.0
+langfuse>=2.30.0
+pytest>=8.0.0

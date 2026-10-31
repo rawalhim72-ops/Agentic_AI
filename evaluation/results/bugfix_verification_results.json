@@ -1,0 +1,154 @@
+[
+  {
+    "test_id": "A",
+    "query": "Hello",
+    "status": "PASS",
+    "detected_intent": "DIRECT_ANSWER",
+    "action": "Direct Answer Generation (No DB/RAG needed)",
+    "evidence": [],
+    "final_answer": "Hello! I am your Intelligent Student Support Assistant. I can assist you with real-time fee balances, scholarship status, university policies from the student handbook, or formal support ticket creation. How may I help you today?",
+    "latency_ms": 14.75,
+    "token_usage": {
+      "input_tokens": 5,
+      "output_tokens": 57,
+      "total_tokens": 62
+    },
+    "notes": []
+  },
+  {
+    "test_id": "B",
+    "query": "What is the admission process?",
+    "status": "PASS",
+    "detected_intent": "RAG_RETRIEVAL",
+    "action": "RAG Retrieval (3 chunks)",
+    "evidence": [
+      "[CHUNK-STUDENT_-P2-04 | Page 2]: the Global Relations Office) and are NOT governed by or contained within this handbook.\nSection 9: Admissions Process, E...",
+      "[CHUNK-STUDENT_-P2-05 | Page 2]: Submission of the Online Application Form via the institutional portal (admissions.apexinstitute.edu) along with the\napp...",
+      "[CHUNK-STUDENT_-P2-06 | Page 2]: Admission Offer Letters.\nMandatory Documents Required for Admission: All provisionally admitted candidates must submit v..."
+    ],
+    "final_answer": "According to Section 9 of the Student Policy Handbook (Admissions Process, Eligibility Criteria, and Required Documentation, Page 2):\n\nThe admissions procedure at Apex Institute comprises four mandatory sequential stages:\n\n1. **Stage 1: Online Application Form** \u2014 Submission of the online application form via the institutional portal (`admissions.apexinstitute.edu`) along with a non-refundable processing fee of INR 2,000.\n2. **Stage 2: Entrance Examination** \u2014 Candidates must present valid percentiles in recognized national/international examinations (CAT, GMAT, GRE, GATE, or the Apex Institute Aptitude Test - AIAT) meeting the cut-off threshold of 75th percentile.\n3. **Stage 3: Personal Interview (PI) & Statement of Purpose (SOP)** \u2014 Evaluation conducted by the Departmental Admissions Committee assessing domain competence, analytical ability, and leadership potential.\n4. **Stage 4: Merit List & Provisional Admission Offer** \u2014 Publication of the composite merit list and formal issuance of Provisional Admission Offer Letters.\n\n**Verification Timeline:** All provisionally admitted candidates must complete physical document verification within 15 calendar days of receiving their offer.\n\n*(Source: student_handbook.pdf | Section 9 | Page 2)*",
+    "latency_ms": 22979.68,
+    "token_usage": {
+      "input_tokens": 422,
+      "output_tokens": 314,
+      "total_tokens": 736
+    },
+    "notes": []
+  },
+  {
+    "test_id": "C",
+    "query": "What documents are required for admission?",
+    "status": "PASS",
+    "detected_intent": "RAG_RETRIEVAL",
+    "action": "RAG Retrieval (3 chunks)",
+    "evidence": [
+      "[CHUNK-STUDENT_-P2-06 | Page 2]: Admission Offer Letters.\nMandatory Documents Required for Admission: All provisionally admitted candidates must submit v...",
+      "[CHUNK-STUDENT_-P2-07 | Page 2]: qualifying examinations (minimum 60% aggregate or 6.5 CGPA required).\n3. Entrance Exam Scorecard: Valid authenticated sc...",
+      "[CHUNK-STUDENT_-P2-08 | Page 2]: 6. Conduct / Character Certificate: Issued by the Principal, Dean, or Head of Institution last attended.\n7. Category / R..."
+    ],
+    "final_answer": "According to Section 9 of the Student Policy Handbook (Mandatory Documents Required for Admission, Page 2):\n\nAll provisionally admitted candidates must submit original documents and attested photocopies for mandatory physical verification within 15 calendar days:\n\n1. **Secondary School (Class 10) Board Certificate & Marksheet** \u2014 Proof of date of birth.\n2. **Higher Secondary (Class 12) Board Certificate & Marksheet** \u2014 Minimum 60% aggregate or 6.5 CGPA.\n3. **Bachelor's Degree Certificate & Consolidated Marksheets** \u2014 Minimum 60% aggregate or 6.5 CGPA.\n4. **Entrance Exam Scorecard** \u2014 Valid scorecard for CAT, GMAT, GRE, GATE, or AIAT.\n5. **Government-Issued Photo ID** \u2014 Aadhaar Card, Passport, or Voter ID.\n6. **Transfer Certificate (TC) & Migration Certificate** \u2014 From the previous university/college.\n7. **Conduct / Character Certificate** \u2014 Issued by the head of the institution last attended.\n8. **Category / Reservation Certificate** \u2014 SC, ST, OBC-NCL, EWS, or PwD (if applicable).\n9. **Passport-Sized Photographs** \u2014 4 recent colored photographs.\n\nFailure to complete physical verification within 15 calendar days results in forfeiture of the provisional admission seat.\n\n*(Source: student_handbook.pdf | Section 9 | Page 2)*",
+    "latency_ms": 21.76,
+    "token_usage": {
+      "input_tokens": 424,
+      "output_tokens": 310,
+      "total_tokens": 734
+    },
+    "notes": []
+  },
+  {
+    "test_id": "D",
+    "query": "What is my fee status?",
+    "status": "PASS",
+    "detected_intent": "TOOL_CALL",
+    "action": "Tool Execution: fee_status_checker",
+    "evidence": [
+      "Tool fee_status_checker: {\"status\": \"SUCCESS\", \"student_id\": \"STU1001\", \"message\": \"Fee status for Rahul Sharma: Status is Partial with balance INR 150,000.00.\", \"data\": {\"student_id\": \"STU1001\", \"total_fees\": 450000.0, \"amount_paid\": 300000.0, \"outstanding_balance\": 150000.0, \"payment_status\": \"Partial\", \"due_date\": \"2026-11-30\", \"last_payment_date\": \"2026-08-20\", \"currency\": \"INR\", \"student_name\": \"Rahul Sharma\", \"programme\": \"MBA\"}, \"latency_ms\": 7.05}"
+    ],
+    "final_answer": "Here is your current fee status for Rahul Sharma (STU1001):\n- **Total Fees Assessed:** INR 450,000.00\n- **Amount Paid:** INR 300,000.00\n- **Outstanding Balance:** INR 150,000.00\n- **Payment Status:** Partial\n- **Due Date:** 2026-11-30\n\nPlease ensure any outstanding balance is cleared through the student finance portal prior to the due date.",
+    "latency_ms": 19.59,
+    "token_usage": {
+      "input_tokens": 160,
+      "output_tokens": 85,
+      "total_tokens": 245
+    },
+    "notes": []
+  },
+  {
+    "test_id": "E",
+    "query": "What is my scholarship status?",
+    "status": "PASS",
+    "detected_intent": "TOOL_CALL",
+    "action": "Tool Execution: scholarship_status_checker",
+    "evidence": [
+      "Tool scholarship_status_checker: {\"status\": \"SUCCESS\", \"student_id\": \"STU1001\", \"message\": \"Scholarship 'Merit Excellence Fellowship' is currently Approved.\", \"data\": {\"student_id\": \"STU1001\", \"scholarship_name\": \"Merit Excellence Fellowship\", \"application_status\": \"Approved\", \"award_amount\": 50000.0, \"disbursement_date\": \"2026-09-01\", \"details\": \"Requires maintaining CGPA above 3.5 in all trimesters.\", \"student_name\": \"Rahul Sharma\"}, \"latency_ms\": 5.53}"
+    ],
+    "final_answer": "**Scholarship Application Status for Rahul Sharma:**\n- **Scholarship Name:** Merit Excellence Fellowship\n- **Current Status:** Approved\n- **Award Amount:** INR 50,000.00\n- **Details:** Requires maintaining CGPA above 3.5 in all trimesters.",
+    "latency_ms": 17.72,
+    "token_usage": {
+      "input_tokens": 159,
+      "output_tokens": 59,
+      "total_tokens": 218
+    },
+    "notes": []
+  },
+  {
+    "test_id": "F",
+    "query": "What is the next working day payment policy?",
+    "status": "PASS",
+    "detected_intent": "RAG_RETRIEVAL",
+    "action": "RAG Retrieval (3 chunks)",
+    "evidence": [
+      "[CHUNK-STUDENT_-P1-03 | Page 1]: fines are cleared.\nSection 3: Payment Portal Failures, Technical Glitches, and Deadline\nExtensions\nIf a student experien...",
+      "[CHUNK-STUDENT_-P1-02 | Page 1]: A grace period of five (5) business days is automatically applied following any payment deadline. If payment is not reco...",
+      "[CHUNK-STUDENT_-P1-01 | Page 1]: completed no later than November 30 by 23:59 IST. For the Spring Semester, the payment deadline is April 15 by 23:59\nIST..."
+    ],
+    "final_answer": "According to Section 3 of the Apex Institute Student Policy Handbook (Payment Portal Failures, Technical Glitches, and Deadline Extensions, Page 1):\n\n**Yes, you can pay on the next working day without penalty.**\n\nIf the university payment portal is unresponsive or experiences a technical outage on or immediately before an official deadline, students are granted an automatic grace extension until the next working day without incurring any late fee or fine. Please make sure to record your bank transaction UTR reference number or error screenshot and submit a support ticket within 24 hours.\n\n*(Source: student_handbook.pdf | Section 3 | Page 1)*",
+    "latency_ms": 24.23,
+    "token_usage": {
+      "input_tokens": 454,
+      "output_tokens": 162,
+      "total_tokens": 616
+    },
+    "notes": []
+  },
+  {
+    "test_id": "G",
+    "query": "My name is Himanshu and I want to know the admission process.",
+    "status": "PASS",
+    "detected_intent": "RAG_RETRIEVAL",
+    "action": "RAG Retrieval (3 chunks)",
+    "evidence": [
+      "[CHUNK-STUDENT_-P2-04 | Page 2]: the Global Relations Office) and are NOT governed by or contained within this handbook.\nSection 9: Admissions Process, E...",
+      "[CHUNK-STUDENT_-P2-05 | Page 2]: Submission of the Online Application Form via the institutional portal (admissions.apexinstitute.edu) along with the\napp...",
+      "[CHUNK-STUDENT_-P2-06 | Page 2]: Admission Offer Letters.\nMandatory Documents Required for Admission: All provisionally admitted candidates must submit v..."
+    ],
+    "final_answer": "Hello Aryaman!\n\nAccording to Section 9 of the Student Policy Handbook (Admissions Process, Eligibility Criteria, and Required Documentation, Page 2):\n\nThe admissions procedure at Apex Institute comprises four mandatory sequential stages:\n\n1. **Stage 1: Online Application Form** \u2014 Submission of the online application form via the institutional portal (`admissions.apexinstitute.edu`) along with a non-refundable processing fee of INR 2,000.\n2. **Stage 2: Entrance Examination** \u2014 Candidates must present valid percentiles in recognized national/international examinations (CAT, GMAT, GRE, GATE, or the Apex Institute Aptitude Test - AIAT) meeting the cut-off threshold of 75th percentile.\n3. **Stage 3: Personal Interview (PI) & Statement of Purpose (SOP)** \u2014 Evaluation conducted by the Departmental Admissions Committee assessing domain competence, analytical ability, and leadership potential.\n4. **Stage 4: Merit List & Provisional Admission Offer** \u2014 Publication of the composite merit list and formal issuance of Provisional Admission Offer Letters.\n\n**Verification Timeline:** All provisionally admitted candidates must complete physical document verification within 15 calendar days of receiving their offer.\n\n*(Source: student_handbook.pdf | Section 9 | Page 2)*",
+    "latency_ms": 37.46,
+    "token_usage": {
+      "input_tokens": 461,
+      "output_tokens": 318,
+      "total_tokens": 779
+    },
+    "notes": []
+  },
+  {
+    "test_id": "H",
+    "query": "I want to know admission process.",
+    "status": "PASS",
+    "detected_intent": "RAG_RETRIEVAL",
+    "action": "RAG Retrieval (3 chunks)",
+    "evidence": [
+      "[CHUNK-STUDENT_-P2-04 | Page 2]: the Global Relations Office) and are NOT governed by or contained within this handbook.\nSection 9: Admissions Process, E...",
+      "[CHUNK-STUDENT_-P2-05 | Page 2]: Submission of the Online Application Form via the institutional portal (admissions.apexinstitute.edu) along with the\napp...",
+      "[CHUNK-STUDENT_-P2-06 | Page 2]: Admission Offer Letters.\nMandatory Documents Required for Admission: All provisionally admitted candidates must submit v..."
+    ],
+    "final_answer": "According to Section 9 of the Student Policy Handbook (Admissions Process, Eligibility Criteria, and Required Documentation, Page 2):\n\nThe admissions procedure at Apex Institute comprises four mandatory sequential stages:\n\n1. **Stage 1: Online Application Form** \u2014 Submission of the online application form via the institutional portal (`admissions.apexinstitute.edu`) along with a non-refundable processing fee of INR 2,000.\n2. **Stage 2: Entrance Examination** \u2014 Candidates must present valid percentiles in recognized national/international examinations (CAT, GMAT, GRE, GATE, or the Apex Institute Aptitude Test - AIAT) meeting the cut-off threshold of 75th percentile.\n3. **Stage 3: Personal Interview (PI) & Statement of Purpose (SOP)** \u2014 Evaluation conducted by the Departmental Admissions Committee assessing domain competence, analytical ability, and leadership potential.\n4. **Stage 4: Merit List & Provisional Admission Offer** \u2014 Publication of the composite merit list and formal issuance of Provisional Admission Offer Letters.\n\n**Verification Timeline:** All provisionally admitted candidates must complete physical document verification within 15 calendar days of receiving their offer.\n\n*(Source: student_handbook.pdf | Section 9 | Page 2)*",
+    "latency_ms": 28.07,
+    "token_usage": {
+      "input_tokens": 423,
+      "output_tokens": 314,
+      "total_tokens": 737
+    },
+    "notes": []
+  }
+]

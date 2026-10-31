@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+env/
+venv/
+ENV/
+.venv
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Environments & Keys
+.env
+*.env.local
+
+# Database & Runtime Data
+*.db
+*.sqlite3
+data/vector_store/
+data/logs/*.jsonl
+data/logs/*.log
+evaluation/results/*.csv
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

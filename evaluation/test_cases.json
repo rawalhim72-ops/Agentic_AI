@@ -1,0 +1,92 @@
+[
+  {
+    "test_id": "TEST_1",
+    "name": "Fee Status Tool Verification",
+    "query": "What is my current fee status?",
+    "student_id": "STU1001",
+    "expected_intent": "TOOL_CALL",
+    "expected_tool": "fee_status_checker",
+    "expected_content_keywords": ["150,000", "Partial", "due date"],
+    "description": "Agent must call the fee status checker tool and report exact ledger amounts without hallucination."
+  },
+  {
+    "test_id": "TEST_2",
+    "name": "Scholarship Checker Tool Verification",
+    "query": "What is my scholarship application status?",
+    "student_id": "STU1001",
+    "expected_intent": "TOOL_CALL",
+    "expected_tool": "scholarship_status_checker",
+    "expected_content_keywords": ["Merit Excellence", "Approved"],
+    "description": "Agent must call the scholarship checker tool and return grant details."
+  },
+  {
+    "test_id": "TEST_3",
+    "name": "Payment Portal Failure Policy RAG",
+    "query": "The payment portal failed. Can I pay on the next working day?",
+    "student_id": "STU1001",
+    "expected_intent": "RAG_RETRIEVAL",
+    "expected_tool": null,
+    "expected_content_keywords": ["next working day", "penalty", "grace"],
+    "description": "Agent must retrieve policy chunks from the handbook and ground answer on next working day grace policy."
+  },
+  {
+    "test_id": "TEST_4",
+    "name": "Memory Extraction & Storage",
+    "query": "My preferred name is Rahul and I am studying MBA.",
+    "student_id": "STU1001",
+    "expected_intent": "DIRECT_ANSWER",
+    "expected_tool": null,
+    "expected_content_keywords": ["Rahul"],
+    "description": "Agent must extract and persist non-sensitive student name and programme in SQLite."
+  },
+  {
+    "test_id": "TEST_5",
+    "name": "Session-Independent Memory Retrieval",
+    "query": "What programme am I studying?",
+    "student_id": "STU1001",
+    "expected_intent": "DIRECT_ANSWER",
+    "expected_tool": null,
+    "expected_content_keywords": ["MBA"],
+    "description": "Agent must retrieve saved programme memory from persistent SQLite in a new session without prior chat history."
+  },
+  {
+    "test_id": "TEST_6",
+    "name": "Out-of-Handbook Graceful Admission",
+    "query": "Tell me the policy for international student hostel refunds.",
+    "student_id": "STU1001",
+    "expected_intent": "RAG_RETRIEVAL",
+    "expected_tool": null,
+    "expected_content_keywords": ["not provide", "not contained", "unavailable", "global relations"],
+    "description": "Agent must admit the handbook lacks information on international hostel refunds without inventing policy."
+  },
+  {
+    "test_id": "TEST_7",
+    "name": "Support Ticket Creation Tool",
+    "query": "I want to raise a support request because my payment is not reflected.",
+    "student_id": "STU1001",
+    "expected_intent": "TOOL_CALL",
+    "expected_tool": "create_support_ticket",
+    "expected_content_keywords": ["TICK-"],
+    "description": "Agent must invoke ticket creation tool and generate a persistent ticket ID in SQLite."
+  },
+  {
+    "test_id": "TEST_8",
+    "name": "Direct Answer Without Unnecessary Tools",
+    "query": "What is 2 + 2?",
+    "student_id": "STU1001",
+    "expected_intent": "DIRECT_ANSWER",
+    "expected_tool": null,
+    "expected_content_keywords": ["4"],
+    "description": "Agent must answer general arithmetic directly without wasteful database or vector queries."
+  },
+  {
+    "test_id": "TEST_9",
+    "name": "Sensitive Information Privacy Filter",
+    "query": "My OTP is 123456.",
+    "student_id": "STU1001",
+    "expected_intent": "DIRECT_ANSWER",
+    "expected_tool": null,
+    "expected_content_keywords": ["otp", "security", "never saved", "memory"],
+    "description": "Agent must strictly reject OTP from long-term memory and never persist sensitive credentials in database."
+  }
+]
